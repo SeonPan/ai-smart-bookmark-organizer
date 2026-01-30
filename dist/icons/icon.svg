@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="16" fill="hsl(217, 91%, 60%)"/>
+  <path d="M64 24 L88 36 L88 84 L64 96 L40 84 L40 36 Z" fill="white" opacity="0.9"/>
+  <path d="M64 32 L80 40 L80 80 L64 88 L48 80 L48 40 Z" fill="hsl(217, 91%, 60%)"/>
+  <circle cx="64" cy="60" r="12" fill="white"/>
+  <path d="M64 56 L68 64 L60 64 Z" fill="hsl(217, 91%, 60%)" transform="rotate(180 64 60)"/>
+</svg>
