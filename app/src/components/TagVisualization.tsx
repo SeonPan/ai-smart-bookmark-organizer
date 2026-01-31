@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -39,31 +39,35 @@ export const TagVisualization = ({ refreshTrigger = 0 }: TagVisualizationProps) 
   const allBookmarks = flattenBookmarks(tree);
   const { t } = useLanguage();
 
+  // 计算每个标签的有效书签数量
+  const getValidBookmarkCount = (tag: Tag): number => {
+    return tag.bookmarkIds.filter(id => allBookmarks.some(b => b.id === id && b.url)).length;
+  };
+
   // 加载标签数据
-  const loadTags = useCallback(async () => {
+  const loadTags = async () => {
     setLoading(true);
     try {
       const tagsData = await getAllTags();
-      // 按书签数量排序
-      tagsData.sort((a, b) => b.bookmarkIds.length - a.bookmarkIds.length);
       setTags(tagsData);
     } catch (e) {
       console.error('加载标签失败:', e);
     } finally {
       setLoading(false);
     }
-  }, []);
+  };
 
+  // 组件挂载时加载标签
   useEffect(() => {
     loadTags();
-  }, [loadTags]);
+  }, []);
 
   // 响应外部刷新触发
   useEffect(() => {
     if (refreshTrigger > 0) {
       loadTags();
     }
-  }, [refreshTrigger, loadTags]);
+  }, [refreshTrigger]);
 
   // 获取书签所在文件夹名称
   const getFolderName = (bookmarkId: string): string => {
@@ -88,10 +92,10 @@ export const TagVisualization = ({ refreshTrigger = 0 }: TagVisualizationProps) 
   const handleTagClick = (tag: Tag) => {
     setSelectedTag(tag);
     
-    // 获取该标签下的所有书签信息
+    // 获取该标签下的所有书签信息（过滤掉已失效的书签）
     const bookmarks: BookmarkInfo[] = [];
     for (const bookmarkId of tag.bookmarkIds) {
-      const bookmark = allBookmarks.find(b => b.id === bookmarkId);
+      const bookmark = allBookmarks.find(b => b.id === bookmarkId && b.url);
       if (bookmark) {
         bookmarks.push({
           id: bookmark.id,
@@ -141,7 +145,11 @@ export const TagVisualization = ({ refreshTrigger = 0 }: TagVisualizationProps) 
     );
   }
 
-  const maxCount = tags.length > 0 ? tags[0].bookmarkIds.length : 1;
+  // 过滤并排序标签
+  const validTags = tags.filter(tag => getValidBookmarkCount(tag) > 0);
+  validTags.sort((a, b) => getValidBookmarkCount(b) - getValidBookmarkCount(a));
+  
+  const maxCount = validTags.length > 0 ? Math.max(...validTags.map(getValidBookmarkCount)) : 1;
 
   return (
     <div className="space-y-6">
@@ -156,7 +164,7 @@ export const TagVisualization = ({ refreshTrigger = 0 }: TagVisualizationProps) 
           </CardDescription>
         </CardHeader>
         <CardContent>
-          {tags.length === 0 ? (
+          {validTags.length === 0 ? (
             <div className="text-center py-12 text-muted-foreground">
               <TagIcon className="w-12 h-12 mx-auto mb-4 opacity-50" />
               <p>{t('tags.noTags')}</p>
@@ -164,8 +172,9 @@ export const TagVisualization = ({ refreshTrigger = 0 }: TagVisualizationProps) 
             </div>
           ) : (
             <div className="flex flex-wrap gap-4 justify-center py-4">
-              {tags.map((tag, index) => {
-                const size = getBubbleSize(tag.bookmarkIds.length, maxCount);
+              {validTags.map((tag, index) => {
+                const validCount = getValidBookmarkCount(tag);
+                const size = getBubbleSize(validCount, maxCount);
                 const colorClass = getBubbleColor(index);
                 
                 return (
@@ -188,7 +197,7 @@ export const TagVisualization = ({ refreshTrigger = 0 }: TagVisualizationProps) 
                       {tag.name}
                     </span>
                     <span className="text-xs opacity-80 mt-1">
-                      {t('tags.bookmarksCount', { count: tag.bookmarkIds.length })}
+                      {t('tags.bookmarksCount', { count: validCount })}
                     </span>
                   </button>
                 );
@@ -196,9 +205,9 @@ export const TagVisualization = ({ refreshTrigger = 0 }: TagVisualizationProps) 
             </div>
           )}
           
-          {tags.length > 0 && (
+          {validTags.length > 0 && (
             <div className="text-center text-sm text-muted-foreground mt-4">
-              {t('tags.summary', { count: tags.length, bookmarks: tags.reduce((sum, tag) => sum + tag.bookmarkIds.length, 0) })}
+              {t('tags.summary', { count: validTags.length, bookmarks: validTags.reduce((sum, tag) => sum + getValidBookmarkCount(tag), 0) })}
             </div>
           )}
         </CardContent>

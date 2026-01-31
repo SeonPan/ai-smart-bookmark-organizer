@@ -1,6 +1,5 @@
 # AI Smart Bookmark Organizer (ASBO)
 
-<div align="center">
 
 ![ASBO Logo](https://img.shields.io/badge/AI-Smart%20Bookmark%20Organizer-blue?style=for-the-badge&logo=bookmarks)
 ![Version](https://img.shields.io/badge/Version-v1.0.0-green?style=flat-square)
@@ -200,8 +199,4 @@ Used the following tools for Vibe Coding
 
 ---
 
-<div align="center">
-
 **If this project helps you, please ⭐ Star to support!**
-
-</div>

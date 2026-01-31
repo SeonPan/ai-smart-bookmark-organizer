@@ -5,33 +5,33 @@
     "src": "../../../../@crx/manifest",
     "isEntry": true
   },
-  "_useLanguage-DQx_ykSB.css": {
-    "file": "assets/useLanguage-DQx_ykSB.css",
-    "src": "_useLanguage-DQx_ykSB.css"
-  },
-  "_useLanguage-kksTJtPE.js": {
-    "file": "assets/useLanguage-kksTJtPE.js",
+  "_useLanguage-C89AZ-qH.js": {
+    "file": "assets/useLanguage-C89AZ-qH.js",
     "name": "useLanguage",
     "css": [
       "assets/useLanguage-DQx_ykSB.css"
     ]
   },
+  "_useLanguage-DQx_ykSB.css": {
+    "file": "assets/useLanguage-DQx_ykSB.css",
+    "src": "_useLanguage-DQx_ykSB.css"
+  },
   "index.html": {
-    "file": "assets/popup-DFSJWhDY.js",
+    "file": "assets/popup-DC_z1jGp.js",
     "name": "popup",
     "src": "index.html",
     "isEntry": true,
     "imports": [
-      "_useLanguage-kksTJtPE.js"
+      "_useLanguage-C89AZ-qH.js"
     ]
   },
   "options.html": {
-    "file": "assets/options-CtK8Yz02.js",
+    "file": "assets/options-Cv73IxOo.js",
     "name": "options",
     "src": "options.html",
     "isEntry": true,
     "imports": [
-      "_useLanguage-kksTJtPE.js"
+      "_useLanguage-C89AZ-qH.js"
     ]
   },
   "src/background.ts": {

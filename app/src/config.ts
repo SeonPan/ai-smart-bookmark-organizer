@@ -3,7 +3,7 @@
 
 export const CONFIG = {
   // 用户手册地址
-  USER_MANUAL_URL: 'https://github.com/yourusername/ai-bookmark-organizer/blob/main/docs/用户操作手册.md',
+  USER_MANUAL_URL: 'https://github.com/SeonPan/ai-smart-bookmark-organizer',
   
   // 预设模型配置
   PRESET_MODELS: [

@@ -1,6 +1,5 @@
 # AI Smart Bookmark Organizer (ASBO)
 
-<div align="center">
 
 ![ASBO Logo](https://img.shields.io/badge/AI-Smart%20Bookmark%20Organizer-blue?style=for-the-badge&logo=bookmarks)
 ![Version](https://img.shields.io/badge/Version-v1.0.0-green?style=flat-square)
@@ -172,8 +171,6 @@ ai-smart-bookmark-organizer/
 
 欢迎提交 Issue ！
 
-### 请作者喝咖啡
-
 ---
 
 ## 📄 许可证
@@ -200,8 +197,5 @@ ai-smart-bookmark-organizer/
 
 ---
 
-<div align="center">
 
 **如果这个项目对您有帮助，欢迎 ⭐ Star 支持！**
-
-</div>
