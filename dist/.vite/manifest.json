@@ -1,0 +1,52 @@
+{
+  "../../../../@crx/manifest": {
+    "file": "assets/crx-manifest.js-Cb9TJmm1.js",
+    "name": "crx-manifest.js",
+    "src": "../../../../@crx/manifest",
+    "isEntry": true
+  },
+  "_storageService-B__dlvI6.js": {
+    "file": "assets/storageService-B__dlvI6.js",
+    "name": "storageService"
+  },
+  "_useLanguage-CJg595oe.css": {
+    "file": "assets/useLanguage-CJg595oe.css",
+    "src": "_useLanguage-CJg595oe.css"
+  },
+  "_useLanguage-_k2oFa9-.js": {
+    "file": "assets/useLanguage-_k2oFa9-.js",
+    "name": "useLanguage",
+    "css": [
+      "assets/useLanguage-CJg595oe.css"
+    ]
+  },
+  "index.html": {
+    "file": "assets/popup-DkbvnFyP.js",
+    "name": "popup",
+    "src": "index.html",
+    "isEntry": true,
+    "imports": [
+      "_useLanguage-_k2oFa9-.js",
+      "_storageService-B__dlvI6.js"
+    ]
+  },
+  "options.html": {
+    "file": "assets/options-BWc2ALr6.js",
+    "name": "options",
+    "src": "options.html",
+    "isEntry": true,
+    "imports": [
+      "_useLanguage-_k2oFa9-.js",
+      "_storageService-B__dlvI6.js"
+    ]
+  },
+  "src/background.ts": {
+    "file": "assets/background.ts-C49Qx4-9.js",
+    "name": "background.ts",
+    "src": "src/background.ts",
+    "isEntry": true,
+    "imports": [
+      "_storageService-B__dlvI6.js"
+    ]
+  }
+}

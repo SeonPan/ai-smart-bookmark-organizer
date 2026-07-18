@@ -1,0 +1,24 @@
+# 依赖
+node_modules/
+
+# 构建输出（根目录 dist/ 为发布版，不忽略；app/dist 为构建中间产物）
+app/dist/
+
+# 本地参考资料（不发布）
+参考/
+ai-integration-module/
+
+# 演示素材（大文件，不发布）
+演示/
+
+# 内部工作文件
+TODO.txt
+.qoder/
+.workbuddy/
+
+# 临时文件
+v1-temp.zip
+
+# 系统文件
+Thumbs.db
+.DS_Store

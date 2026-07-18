@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "AI Smart Bookmark Organizer",
+  "version": "1.0.0",
+  "description": "智能书签管理工具，通过AI语义理解自动整理浏览器收藏夹",
+  "permissions": [
+    "bookmarks",
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "service-worker-loader.js",
+    "type": "module"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S"
+      },
+      "description": "打开智能保存弹窗"
+    },
+    "quick_save": {
+      "suggested_key": {
+        "default": "Alt+Shift+S"
+      },
+      "description": "快速保存：AI分析并自动保存到推荐位置"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
